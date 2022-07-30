@@ -42,10 +42,11 @@ function savePostAndRedirect(path){
         post.markdown = req.body.markdown
         try{
           post = await post.save()
-          res.redirect('/posts/${post.slug}')
+          res.redirect(`/posts/${post.slug}`)
         } catch(e){
-         res.render('posts/${path}', { post : post })
+         res.render(`posts/${path}`, { post : post })
         }
+        
     }
 }
 
