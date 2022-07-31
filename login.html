@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Noto+Sans+KR:wght@900&display=swap');
+  h1 {
+    text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 45px;
+    height: 50px;
+    position: relative;
+
+  }
+  h3 {
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    height: 25px;
+  }
+  ul {
+    list-style: none;
+  }
+  fieldset {
+    width: 450px;
+    height: 300px;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 50px auto;
+  }
+  label {
+    float: left;
+    width: 100px;
+    font-size: 15pt;
+  }
+  li {
+    height: 50px;
+    position: relative;
+    top: 30px;
+    left: 30px;
+  }
+  button {
+    height: 45px;
+    position: relative;
+    left: 160px;
+    top: 20px;
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TECHBLOG</h1>
+  </header>
+  <form action="" autocomplete="off">
+      <fieldset>
+        <h3>로그인</h3>
+        <ul>
+          <li>
+            <label for="id">아이디</label>
+            <input type="text" id="id" placeholder="아이디">
+          </li>
+          <li>
+            <label for="pwd">비밀번호</label>
+            <input type="password" size="0" id="pwd" placeholder="비밀번호">
+          </li>
+        </ul>
+        <button type="submit">로그인</button>
+        <button type="submit">회원가입</button>
+      </fieldset>
+    </form>
+
+</body>
+</html>
