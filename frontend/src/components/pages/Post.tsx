@@ -12,9 +12,9 @@ const Post: React.FC = () => {
   const params = useParams();
 
   const tempPost = useSelector((state: Posts) => state.post.post);
-  const post = tempPost.filter((list) => list.id === Number(params.id));
+  const post = tempPost.filter((list) => list.id === params.id);
   return (
-    <div>
+    <div className="blog">
       <p>{post[0].title}</p>
       <p>{post[0].author}</p>
       <Viewer initialValue={post[0].markdown} />

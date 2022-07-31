@@ -1,11 +1,12 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 export interface IPostState {
-  id: number;
+  id: string;
   title: string;
   author: string;
-  text: string;
+  description: string;
   markdown: string;
+  created_at: Date;
 }
 
 export interface PostsState {
@@ -22,6 +23,12 @@ const postSlice = createSlice({
   reducers: {
     addPost(state, action) {
       state.post = [...state.post, action.payload];
+    },
+    setPost(state, action) {
+      state.post = action.payload;
+    },
+    deletePost(state, action) {
+      state.post = state.post.filter((list) => list.id !== action.payload);
     },
   },
 });
