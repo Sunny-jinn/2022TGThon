@@ -1,16 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import styled from "styled-components";
 import reportWebVitals from './reportWebVitals';
+import LoginPage from './Page/LoginPage';
+import RegisterationPage from './Page/RegisterationPage';
+import {
+  BrowserRouter,
+  Routes,
+  Route 
+} from "react-router-dom";
 
-import LoginHeader from './login/LoginHeader';
-import LoginForm from './login/LoginForm';
+
+
+function App(props) {
+  return (
+  <BrowserRouter>
+    <Routes>
+      <Route index element={<LoginPage/>}/>
+      <Route path="registeration" element={<RegisterationPage/>}/>
+    </Routes>
+  </BrowserRouter>);
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <LoginHeader />
-    <LoginForm/>
+    <App/>
   </React.StrictMode>
 );
 

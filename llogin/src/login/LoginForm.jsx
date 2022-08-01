@@ -1,25 +1,48 @@
 import React from "react";
+import TextInput from "../UI/TextInput";
+import Button from "../UI/Button";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
+
+const StyledForm = styled.form`
+width:500px;
+margin: 50px auto;`;
+
+const Styledfieldset = styled.fieldset`
+border-radius: 15px;
+height: 300px;`;
+
+const Styledh3 =styled.h3`
+text-align: center;
+font-size:35px;
+height: 35px;`;
+
+const Styledul = styled.ul`
+list-style: none;`;
 
 function LoginForm(props){
+  const {} = props;
+  const navigate = useNavigate();
+
   return (
-    <form action="" autocomplete="off">
-      <fieldset>
-        <h3>로그인</h3>
-        <ul>
+    <StyledForm action="" autocomplete="off">
+      <Styledfieldset>
+        <Styledh3>로그인</Styledh3>
+        <Styledul>
           <li>
-            <label for="id">아이디</label>
-            <input type="text" id="id" placeholder="아이디"/>
+            <label for="id"></label>
+            <TextInput  placeholder="ID" width={370} height={45}/>
           </li>
           <li>
-            <label for="pwd">비밀번호</label>
-            <input type="password" size="0" id="pwd" placeholder="비밀번호"/>
+            <label for="pwd"></label>
+            <TextInput width={370} height={45} type="password" size="0" placeholder="PASSWORD"/>
           </li>
-        </ul>
-        <button type="submit">로그인</button>
-        <button type="submit">회원가입</button>
-      </fieldset>
-    </form>
+        </Styledul>
+        <span style={{margin:"140px"}}><Button title="로그인"/>
+        <Button title="회원가입" onClick={()=>{navigate("/Registeration")}}/></span>
+      </Styledfieldset>
+    </StyledForm>
   );
 }
 
