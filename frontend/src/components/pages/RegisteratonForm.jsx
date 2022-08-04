@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../layout/Button";
 import TextInput from "../layout/TextInput";
+import axios from "axios";
 
 const StyledForm = styled.form`
   width: 600px;
@@ -31,7 +32,17 @@ const Sh3 = styled.h3`
 `;
 
 function RegisterationForm(props) {
-  const {} = props;
+  const inputRef = useRef([]);
+  const clickHandler = () => {
+    axios.post("/user/register", {
+      user: {
+        id: inputRef.current[0].value,
+        password: inputRef.current[1].value,
+        name: inputRef.current[3].value,
+        number: inputRef.current[4].value,
+      },
+    });
+  };
   const navigate = useNavigate();
   return (
     <StyledForm>
@@ -39,33 +50,40 @@ function RegisterationForm(props) {
         <Sh3>회원가입</Sh3>
         <Sli>
           <Slabel>아이디</Slabel>
-          <TextInput margin={15} />
+          <TextInput margin={15} ref={(el) => (inputRef.current[0] = el)} />
           <Button title="확인" />
         </Sli>
         <Sli>
           <Slabel>비밀번호</Slabel>
-          <TextInput margin={15} type="password" />
+          <TextInput
+            margin={15}
+            type="password"
+            ref={(el) => (inputRef.current[1] = el)}
+          />
         </Sli>
         <Sli>
           <Slabel>비밀번호 확인</Slabel>
-          <TextInput margin={15} type="password" />
+          <TextInput
+            margin={15}
+            type="password"
+            ref={(el) => (inputRef.current[2] = el)}
+          />
           <Button title="확인" />
         </Sli>
         <Sli>
           <Slabel>이름</Slabel>
-          <TextInput margin={15} />
+          <TextInput margin={15} ref={(el) => (inputRef.current[3] = el)} />
         </Sli>
         <Sli>
           <Slabel>전화번호</Slabel>
-          <TextInput margin={15} placeholder="010-xxxx-xxxx" />
+          <TextInput
+            margin={15}
+            placeholder="010-xxxx-xxxx"
+            ref={(el) => (inputRef.current[4] = el)}
+          />
         </Sli>
-        <Button
-          title="가입하기"
-          onClick={() => {
-            navigate("/");
-          }}
-        />
       </Styledul>
+      <Button title="가입하기" onClick={clickHandler} />
     </StyledForm>
   );
 }
