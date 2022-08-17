@@ -8,7 +8,7 @@ const dompurify = createDomPurify(new JSDOM().window); //for markdown
 const postSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: false,
   },
   description: {
     type: String,
