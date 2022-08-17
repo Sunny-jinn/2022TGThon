@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-mongoose.connect("mongodb://localhost/blog", {
+mongoose.connect("mongodb://leejeongwoo:1234@127.0.0.1/admin", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
