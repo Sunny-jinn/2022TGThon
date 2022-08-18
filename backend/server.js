@@ -1,23 +1,24 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const path = require("path");
+const morgan = require("morgan");
+
 const Post = require("./models/post");
 const postRouter = require("./routes/posts");
-const app = express();
 const methodOverride = require("method-override");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 
-mongoose.connect("mongodb://leejeongwoo:1234@127.0.0.1/admin", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const connect = require("./models");
+
+const app = express();
+app.set("port", process.env.PORT || 5000);
 app.set("view engine", "ejs");
+connect();
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(morgan("dev"));
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
-app.use(cors());
+app.use(cors()); //다른 도메인에서 요청가능하게 하는 미들웨어
 
 app.get("/", async (req, res) => {
   const posts = await Post.find().sort({
@@ -28,4 +29,21 @@ app.get("/", async (req, res) => {
 
 app.use("/posts", postRouter);
 
-app.listen(5000);
+//오류처리 미들웨어
+app.use((req, res, next) => {
+  const error = new Error(`${req.method} ${req.url}라우터가 없습니다`);
+  error.status = 404;
+  next(error);
+});
+
+app.use((err, req, res, next) => {
+  res.locals.message = err.message;
+  res.locas.errro = process.env.NODE_ENV !== "production" ? err : {};
+  res.status(err.status || 500);
+  res.render("error");
+});
+
+// port연결
+app.listen(app.get("port"), () => {
+  console.log(app.get("port"), "번 포트에서 대기중");
+});
