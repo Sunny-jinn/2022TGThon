@@ -17,7 +17,7 @@ connect();
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(methodOverride("_method"));
+app.use(methodOverride("_method")); //app.put과 app.delete를 사용하기 위한 과정
 app.use(cors()); //다른 도메인에서 요청가능하게 하는 미들웨어
 
 app.get("/", async (req, res) => {
@@ -38,9 +38,9 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   res.locals.message = err.message;
-  res.locas.errro = process.env.NODE_ENV !== "production" ? err : {};
+  res.locals.error = process.env.NODE_ENV !== "production" ? err : {};
   res.status(err.status || 500);
-  res.render("error");
+  //res.render("error");
 });
 
 // port연결

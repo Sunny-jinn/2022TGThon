@@ -1,5 +1,5 @@
 const express = require("express");
-const Post = require("../models/post");
+const Post = require("./../models/post");
 const router = express.Router();
 
 router.get("/new", (req, res) => {
@@ -22,25 +22,11 @@ router.get("/edit/:id", async (req, res) => {
   res.render("posts/edit", { post: post });
 });
 
-router.get("/:slug", async (req, res) => {
-  const post = await Post.findOne({ slug: req.params.slug });
-  if (post == null) res.redirect("/");
-  res.render("posts/show", { post: post });
-});
-
-router.post(
-  "/",
-  async (req, res, next) => {
-    req.post = new Post();
-    next();
-  },
-  savePostAndRedirect("new")
-);
-
 router.post(
   "/new",
   async (req, res, next) => {
     req.post = new Post();
+    // console.log("dsfsdf");
     next();
   },
   savePostAndRedirect("new")
@@ -68,9 +54,9 @@ function savePostAndRedirect(path) {
     post.markdown = req.body.post.markdown;
     try {
       post = await post.save();
-      res.redirect(`/posts/${post.slug}`);
     } catch (e) {
-      res.render(`posts/${path}`, { post: post });
+      // res.render(`posts/${path}`, { post: post });
+      console.log(e);
     }
   };
 }

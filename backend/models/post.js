@@ -1,11 +1,11 @@
-const mongoose = require("mongoose");
-const marked = require("marked");
-const slugify = require("slugify");
-const createDomPurify = require("dompurify"); //for markdown
-const { JSDOM } = require("jsdom"); //for markdown
-const dompurify = createDomPurify(new JSDOM().window); //for markdown
+/*테이블=컬렉션
+  로우=다큐먼트
+  컬럼=필드    */
 
-const postSchema = new mongoose.Schema({
+const mongoose = require("mongoose");
+
+const { Schema } = mongoose;
+const postSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -21,20 +21,6 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  slug: {
-    type: String,
-    required: true,
-    unique: false,
-  },
-});
-
-//url name 설정-title name이 url slug가 되도록 설정
-postSchema.pre("validate", function (next) {
-  if (this.title) {
-    this.slug = slugify(this.title, { lower: false, strict: false });
-  }
-
-  next();
 });
 
 module.exports = mongoose.model("Post", postSchema);
