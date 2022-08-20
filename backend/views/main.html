@@ -7,7 +7,13 @@
     <title>Document</title>
   </head>
   <body>
-    <form id="form" action="/post" method="post" enctype="multipart/form-data">
+    <form
+      id="form"
+      action="/post"
+      method="post"
+      enctype="multipart/form-data"
+      accept-charset="UTF-8"
+    >
       <label id="img-label" for="img">사진 업로드</label>
       <input id="img" type="file" accept="image/*" />
       <input id="imgurl" type="hidden" name="url" />
@@ -18,7 +24,7 @@
       if (document.getElementById("img")) {
         document.getElementById("img").addEventListener("change", function (e) {
           const formData = new FormData();
-          console.log(this, this.files);
+          console.log(this.files[0].name);
           formData.append("img", this.files[0]);
           axios.post("/post/img", formData).then((res) => {
             document.getElementById("imgurl").value = res.data.url;

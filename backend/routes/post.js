@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const iconv = require("iconv-lite");
 
 const Post = require("../models/post");
 
@@ -20,15 +21,17 @@ const upload = multer({
       cb(null, "uploads");
     },
     filename(req, file, cb) {
-      const ext = path.extname(file.originalname);
-      cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+      const filename = iconv.decode(file.originalname, "utf-8");
+
+      const ext = path.extname(filename);
+      cb(null, path.basename(filename, ext) + "_" + Date.now() + ext);
     },
   }),
-  limits: { fileSize: 5 * 1024 * 1024 },
+  limits: { fileSize: 100 * 1024 * 1024 },
 });
 
 router.post("/img", upload.single("img"), (req, res) => {
-  console.log(req.file);
+  // console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
 

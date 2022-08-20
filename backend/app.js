@@ -4,10 +4,11 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const dotenv = require("dotenv");
 const path = require("path");
-const connect = require("./models");
+
 const pageRouter = require("./routes/page");
 const nunjucks = require("nunjucks");
 const postRouter = require("./routes/post");
+const mongoose = require("mongoose");
 
 dotenv.config();
 const app = express();
@@ -17,7 +18,11 @@ nunjucks.configure("views", {
   express: app,
   watch: true,
 });
-connect();
+
+mongoose.connect("mongodb://localhost/blog", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 app.use(morgan("dev"));
 app.use("/img", express.static(path.join(__dirname, "uploads")));
