@@ -41,7 +41,7 @@ const Blog: React.FC = () => {
   return (
     <div>
       <Header />
-      <div className="card-container blog">
+      <div className="card-container blog card-background">
         {postList.map((list: IPostState) => (
           <Card
             key={list.id}

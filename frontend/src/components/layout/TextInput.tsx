@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledTextInput = styled.input`
   font-size: 15pt;
+  margin: 15px;
   ${(props) =>
     props.height &&
     `
