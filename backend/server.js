@@ -12,6 +12,9 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const session = require("express-session");
+const imgRouter = require("./routes/img");
+const morgan = require("morgan");
+const path = require("path");
 
 const passportConfig = require("./passport");
 passportConfig();
@@ -21,10 +24,13 @@ mongoose.connect("mongodb://localhost/blog", {
   useUnifiedTopology: true,
 });
 
+// .env 파일 사용
 dotenv.config();
 
 // app.set("view engine", "ejs");
 
+app.use(morgan("dev"));
+app.use("/img", express.static(path.join(__dirname, "uploads")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
@@ -52,6 +58,8 @@ app.get("/", async (req, res) => {
   });
   res.render("posts/index", { posts: posts });
 });
+
+app.use("/img", imgRouter);
 
 app.use("/posts", postRouter);
 app.use("/user", userRouter);
