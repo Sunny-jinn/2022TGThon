@@ -21,20 +21,14 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  slug: {
+  thumbnail: {
     type: String,
-    required: true,
-    unique: true,
   },
 });
 
 //url name 설정-title name이 url slug가 되도록 설정
-postSchema.pre("validate", function (next) {
-  if (this.title) {
-    this.slug = slugify(this.title, { lower: true, strict: true });
-  }
-
-  next();
-});
+// postSchema.pre("validate", function (next) {
+//   next();
+// });
 
 module.exports = mongoose.model("Post", postSchema);

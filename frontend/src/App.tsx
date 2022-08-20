@@ -1,15 +1,18 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+
 import Blog from "./pages/Blog";
-import NewPost from "./pages/NewPost";
+import NewPost from "./components/post/NewPost";
 import Post from "./pages/Post";
+import LoginPage from "./pages/LoginPage";
+import RegisterationPage from "./pages/RegisterationPage";
 
 const App: React.FC = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/registeration" element={<RegisterationPage />} />
         <Route path="/posts" element={<Blog />} />
         <Route path="/newpost" element={<NewPost />} />
         <Route path="/posts/:id" element={<Post />} />

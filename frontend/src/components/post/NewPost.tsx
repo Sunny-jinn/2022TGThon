@@ -1,7 +1,7 @@
 import React, { ReactEventHandler, useRef, useState } from "react";
 import { Editor, Viewer } from "@toast-ui/react-editor";
 import { useDispatch, useSelector } from "react-redux";
-import { PostsState, postActions } from "../store";
+import { PostsState, postActions } from "../../store";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
