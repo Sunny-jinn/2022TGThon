@@ -43,6 +43,7 @@ router.put(
 
 router.delete("/delete", async (req, res) => {
   await Post.findByIdAndDelete(req.body.id);
+
   res.redirect("/");
 });
 
@@ -56,6 +57,9 @@ function savePostAndRedirect(path) {
     try {
       post = await post.save();
       console.log(post);
+      res.send({
+        message: "hi",
+      });
     } catch (e) {
       // res.render(`posts/${path}`, { post: post });
       console.log(e);

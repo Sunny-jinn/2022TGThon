@@ -3,14 +3,10 @@ import styled from "styled-components";
 
 const StyledTextInput = styled.input`
   font-size: 15pt;
-  margin: 15px;
-  ${(props) =>
-    props.height &&
-    `
-height:${props.height}px;
-`}
+  ${(props) => props.height && `height:${props.height}px;`}
   ${(props) => props.width && `width:${props.width}px;`}
-padding: 5px;
+  margin: 15px;
+  padding: 5px;
 `;
 
 interface IText {

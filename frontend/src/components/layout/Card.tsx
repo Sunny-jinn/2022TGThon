@@ -42,7 +42,7 @@ const Card = (props: PostState) => {
   return (
     <div className="card">
       <div className="card-thumbnail">
-        <img src={props.thumbnail} alt="hi" />
+        <img src={`http://localhost:5000${props.thumbnail}`} alt="hi" />
       </div>
       <div className="card-main">
         <div className="card-title" onClick={() => clickHandler(props.id)}>

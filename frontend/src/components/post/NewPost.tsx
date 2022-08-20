@@ -1,33 +1,66 @@
-import React, { ReactEventHandler, useRef, useState } from "react";
-import { Editor, Viewer } from "@toast-ui/react-editor";
+import React, { useRef, useState } from "react";
+import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
-import { useDispatch, useSelector } from "react-redux";
-import { PostsState, postActions } from "../../store";
+
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const NewPost = () => {
-  const [thumbImg, setThumbImg] = useState("");
+const NewPost = (): JSX.Element => {
+  const [thumbImg, setThumbImg] = useState<string>("");
+  const [thumbFile, setThumbFile] = useState<any>();
+
+  let thPath = "";
 
   const editRef = useRef<Editor>(null);
   const titleRef = useRef<HTMLInputElement>(null);
   const descRef = useRef<HTMLTextAreaElement>(null);
   const imgRef = useRef<HTMLInputElement>(null);
-  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
-  const clickHandler = () => {
-    axios.post("/posts/new", {
-      post: {
-        title: titleRef.current?.value,
-        author: "sunny",
-        description: descRef.current?.value,
-        markdown: editRef.current?.getInstance().getMarkdown(),
-        thumbnail: thumbImg,
-      },
-    });
-
-    navigate("/posts");
+  const clickHandler = async () => {
+    if (thumbFile) {
+      const formData = new FormData();
+      formData.append("img", thumbFile);
+      await axios
+        .post("/img", formData)
+        .then(async (res) => {
+          thPath = await res.data.url;
+        })
+        .catch(() => {
+          console.log("failed");
+        });
+      axios
+        .post("/posts/new", {
+          post: {
+            title: titleRef.current?.value,
+            author: "sunny",
+            description: descRef.current?.value,
+            markdown: editRef.current?.getInstance().getMarkdown(),
+            thumbnail: thPath,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          navigate("/posts");
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .post("/posts/new", {
+          post: {
+            title: titleRef.current?.value,
+            author: "sunny",
+            description: descRef.current?.value,
+            markdown: editRef.current?.getInstance().getMarkdown(),
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          navigate("/posts");
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const uploadImageHandler = () => {
@@ -36,8 +69,8 @@ const NewPost = () => {
 
   const changeImageHandler = (e: any) => {
     e.preventDefault();
-    // console.log(e.target.files[0]);
-    // console.log(URL.createObjectURL(e.target.files[0]));
+
+    setThumbFile(e.target.files[0]);
     setThumbImg(URL.createObjectURL(e.target.files[0]));
   };
 

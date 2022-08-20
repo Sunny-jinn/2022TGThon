@@ -20,6 +20,9 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  thumbnail: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Post", postSchema);

@@ -56,7 +56,6 @@ app.get("/", async (req, res) => {
   const posts = await Post.find().sort({
     createdAt: "desc", //최신순으로 정렬
   });
-  res.render("posts/index", { posts: posts });
 });
 
 app.use("/img", imgRouter);
