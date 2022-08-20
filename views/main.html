@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form" action="/post" method="post" enctype="multipart/form-data">
+      <label id="img-label" for="img">사진 업로드</label>
+      <input id="img" type="file" accept="image/*" />
+      <input id="imgurl" type="hidden" name="url" />
+      <button id="btn" type="submit" class="btn">업로드</button>
+    </form>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      if (document.getElementById("img")) {
+        document.getElementById("img").addEventListener("change", function (e) {
+          const formData = new FormData();
+          console.log(this, this.files);
+          formData.append("img", this.files[0]);
+          axios.post("/post/img", formData).then((res) => {
+            document.getElementById("imgurl").value = res.data.url;
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
