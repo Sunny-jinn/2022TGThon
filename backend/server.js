@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Post = require("./models/post");
+const User = require("./models/user");
 const postRouter = require("./routes/posts");
+const userRouter = require("./routes/user");
 const app = express();
 const methodOverride = require("method-override");
 const cors = require("cors");
@@ -11,6 +13,7 @@ mongoose.connect("mongodb://localhost/blog", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,5 +30,6 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/posts", postRouter);
+app.use("/user", userRouter);
 
 app.listen(5000);

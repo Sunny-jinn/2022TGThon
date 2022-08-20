@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./components/pages/Home";
-import Blog from "./components/pages/Blog";
-import NewPost from "./components/pages/NewPost";
-import Post from "./components/pages/Post";
+import Home from "./pages/Home";
+import Blog from "./pages/Blog";
+import NewPost from "./pages/NewPost";
+import Post from "./pages/Post";
 
 const App: React.FC = () => {
   return (

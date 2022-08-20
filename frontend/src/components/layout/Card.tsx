@@ -1,6 +1,6 @@
 import React, { ReactEventHandler } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/Blog.css";
+import "../../assets/styles/blog.css";
 import axios from "axios";
 import { postActions } from "../../store/index";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,7 @@ interface PostState {
   title: string;
   author: string;
   description: string;
+  thumbnail: string;
 }
 
 interface Post {
@@ -40,12 +41,17 @@ const Card = (props: PostState) => {
 
   return (
     <div className="card">
-      <div className="card-title" onClick={() => clickHandler(props.id)}>
-        {props.title}
+      <div className="card-thumbnail">
+        <img src={props.thumbnail} alt="hi" />
       </div>
-      <div className="card-author">{props.author}</div>
-      <div className="card-text">{props.description}</div>
-      <button onClick={() => deleteHandler(props.id)}>삭제</button>
+      <div className="card-main">
+        <div className="card-title" onClick={() => clickHandler(props.id)}>
+          {props.title}
+        </div>
+        <div className="card-author">{props.author}</div>
+        <div className="card-text">{props.description}</div>
+        <button onClick={() => deleteHandler(props.id)}>삭제</button>
+      </div>
     </div>
   );
 };

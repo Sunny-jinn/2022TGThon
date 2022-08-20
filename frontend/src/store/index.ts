@@ -6,7 +6,7 @@ export interface IPostState {
   author: string;
   description: string;
   markdown: string;
-  created_at: Date;
+  thumbnail: string;
 }
 
 export interface PostsState {

@@ -2,7 +2,7 @@ import { Viewer } from "@toast-ui/react-editor";
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { PostsState } from "../../store";
+import { PostsState } from "../store";
 
 interface Posts {
   post: PostsState;

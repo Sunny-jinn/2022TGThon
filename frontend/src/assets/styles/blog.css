@@ -1,0 +1,164 @@
+body {
+  width: 100%;
+  margin: 0;
+  /* padding: 0; */
+}
+
+header {
+  width: 100%;
+  /* border-bottom: 1px solid #88888db5; */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  height: 65px;
+  border-radius: 10px;
+}
+
+.blog {
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  margin-top: 100px;
+}
+
+.new-post {
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  margin-top: 50px;
+}
+
+.card-container {
+  width: 75%;
+  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  /* width: 1440px; */
+}
+
+.card {
+  float: left;
+  width: 300px;
+  height: 360px;
+  background-color: rgb(236, 236, 236);
+  text-align: center;
+  border-radius: 20px;
+  margin: 0px 10px 20px;
+  box-shadow: 3px 3px 3px 0 rgba(62, 62, 62, 0.299);
+  /* padding: 10px; */
+}
+
+.card-title {
+  font-size: 25px;
+}
+
+.card-thumbnail img {
+  width: 300px;
+  height: 200px;
+  border-radius: 20px 20px 0 0;
+}
+
+.postBtn {
+  position: absolute;
+  top: 20px;
+  right: 12.5%;
+  background: #fff;
+  border-width: 1px;
+  border-radius: 10px;
+  width: 70px;
+  height: 30px;
+  font-size: large;
+}
+
+.search-input {
+  padding: 0.5rem;
+  width: 430px;
+  margin-top: 10px;
+  margin-left: 10%;
+  font-size: 0.875rem;
+  color: #24262d;
+  background-color: #fbfcfd;
+  border-width: 0.1px;
+  border-radius: 0.375rem;
+}
+
+.header-logo {
+  width: 100px;
+  margin-left: 12.5%;
+}
+
+.header-search {
+  width: 70%;
+}
+
+.title {
+  width: 500px;
+  height: 30px;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.description {
+  width: 500px;
+  height: 150px;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.title-box {
+  width: 50%;
+}
+
+.description-box {
+  margin-top: 20px;
+  width: 50%;
+}
+
+.new-post-box {
+  width: 100%;
+  display: flex;
+}
+
+.new-post-left {
+  width: 49%;
+}
+
+.new-post-right {
+  width: 49%;
+}
+
+.new-post-right img {
+  width: 400px;
+  height: 300px;
+}
+
+.new-post-editor {
+  margin-top: 20px;
+}
+
+.image-input {
+  display: none;
+}
+
+.image-box {
+  width: 100%;
+  display: flex;
+}
+
+.input-label {
+  display: block;
+  font-size: 20px;
+  text-align: center;
+  width: 150px;
+  height: 40px;
+  background-color: #24262d;
+  color: #fff;
+  padding: 15px 0 0 0;
+  border-radius: 200px;
+  cursor: pointer;
+}
+
+.input-label:hover {
+  display: block;
+
+  background: #6c6c70;
+}

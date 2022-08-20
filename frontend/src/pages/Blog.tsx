@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../../styles/Blog.css";
-import { IPostState, PostsState } from "../../store/index";
-import Card from "../layout/Card";
+import "../assets/styles/blog.css";
+import { IPostState, PostsState } from "../store/index";
+import Card from "../components/layout/Card";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { postActions } from "../../store/index";
+import { postActions } from "../store/index";
+import Header from "../components/layout/Header";
 
 interface Post {
   post: PostsState;
@@ -26,6 +27,7 @@ const Blog: React.FC = () => {
             author: list.slug,
             description: list.description,
             markdown: list.markdown,
+            thumbnail: list.thumbnail,
           });
         });
         dispatch(postActions.setPost(tempPost));
@@ -34,28 +36,27 @@ const Blog: React.FC = () => {
     getPost();
   }, [dispatch]);
 
+  console.log(postList);
+
   return (
-    <div className="card-container blog">
-      {postList.map((list: IPostState) => (
-        <Card
-          key={list.id}
-          id={list.id}
-          title={list.title}
-          author={list.author}
-          description={list.description}
-        />
-      ))}
-      <Link to="/newpost">
-        <button className="postBtn">글쓰기</button>
-      </Link>
+    <div>
+      <Header />
+      <div className="card-container blog">
+        {postList.map((list: IPostState) => (
+          <Card
+            key={list.id}
+            id={list.id}
+            title={list.title}
+            author={list.author}
+            description={list.description}
+            thumbnail={list.thumbnail}
+          />
+        ))}
+        <Link to="/newpost">
+          <button className="postBtn">글쓰기</button>
+        </Link>
+      </div>
     </div>
-    // <div>
-    //   <div>
-    //     <p>Title</p>
-    //     <p>Author</p>
-    //     <p>Text</p>
-    //   </div>
-    // </div>
   );
 };
 
