@@ -16,6 +16,8 @@ const UserPage = () => {
   const postList = useSelector((state: Post) => state.post.post);
   const dispatch = useDispatch();
   const userId = useParams();
+  const [userColor, setUserColor] = useState("");
+  const [userTp, setUserTp] = useState("");
 
   useEffect(() => {
     const getPost = async () => {
@@ -31,6 +33,8 @@ const UserPage = () => {
             thumbnail: list.thumbnail,
           });
         });
+        setUserColor(res.data.userColor);
+        setUserTp(res.data.userTp);
         dispatch(postActions.setPost(tempPost));
       });
     };
@@ -38,10 +42,13 @@ const UserPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <div className="card-container blog card-background">
+    <div className={userColor}>
+      <Header />
+
+      <div className="card-container blog">
         {postList.map((list: IPostState) => (
           <Card
+            template={userTp}
             key={list.id}
             id={list.id}
             title={list.title}
@@ -52,6 +59,9 @@ const UserPage = () => {
         ))}
         <Link to={`/@${userId.userId}/newpost`}>
           <button className="postBtn">글쓰기</button>
+        </Link>
+        <Link to={`/@${userId.userId}/start`}>
+          <button className="updateBtn">정보 수정</button>
         </Link>
       </div>
     </div>

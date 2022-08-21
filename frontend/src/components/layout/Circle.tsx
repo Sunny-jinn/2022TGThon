@@ -19,7 +19,7 @@ interface Post {
   post: PostsState;
 }
 
-const Card = (props: PostState) => {
+const Circle = (props: PostState) => {
   // const postList = useSelector((state: Post) => state.post.post);
   const userId = useParams();
 
@@ -42,19 +42,22 @@ const Card = (props: PostState) => {
   };
 
   return (
-    <div className="tp-card">
-      <div className="tp-card-thumbnail">
+    <div className="tp-circle">
+      <div className="tp-circle-thumbnail">
         <img src={`http://localhost:5000${props.thumbnail}`} alt="hi" />
-      </div>
-      <div className="tp-card-main">
-        <div className="tp-card-title" onClick={() => clickHandler(props.id)}>
-          {props.title}
+        <div className="tp-circle-main">
+          <div
+            className="tp-circle-title"
+            onClick={() => clickHandler(props.id)}
+          >
+            {props.title}
+          </div>
+          <div className="card-author">{props.author}</div>
+          <div className="card-text">{props.description}</div>
         </div>
-        <div className="card-author">@{props.author}</div>
-        <div className="card-text">{props.description}</div>
       </div>
     </div>
   );
 };
 
-export default Card;
+export default Circle;

@@ -214,16 +214,11 @@ header {
 }
 
 .card:hover {
-  box-shadow :  0 8px 16px 0 rgba(0,0,0,0.2);
-
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
   font-size: 25px;
-}
-
-.card-background {
-  background-color: rgb(255, 255, 255);
 }
 
 .tp-circle {
@@ -269,6 +264,31 @@ header {
   opacity: 0;
 }
 
+.tp-card {
+  float: left;
+  width: 290px;
+  height: 290px;
+
+  /* text-align: center; */
+  border-radius: 10px 10px;
+  margin: 0px 10px 20px;
+  box-shadow: 3px 3px 3px 0 rgba(62, 62, 62, 0.299);
+}
+
+.tp-card-title {
+  font-size: 30px;
+}
+
+.tp-card-main {
+  margin-left: 10px;
+}
+
+.tp-card-thumbnail img {
+  width: 290px;
+  height: 200px;
+  border-radius: 10px 10px 0 0;
+}
+
 .postBtn {
   position: absolute;
   top: 17px;
@@ -281,19 +301,31 @@ header {
   font-size: large;
 }
 
+.updateBtn {
+  position: absolute;
+  top: 17px;
+  right: 20%;
+  background: #fff;
+  border-width: 1px;
+  border-radius: 10px;
+  width: 90px;
+  height: 30px;
+  font-size: large;
+}
+
 .card-footer {
   display: flex;
   padding: 1rem;
   margin-top: 40px;
-  border-top : 1px solid  rgb(198, 192, 192);
-  
+  border-top: 1px solid rgb(198, 192, 192);
 }
 
 .card-author {
-  display : flex;
+  display: flex;
   color: #8294aa;
   font-size: 14px;
   margin: 4px 0;
+  text-align: center;
 }
 
 .card-delete {
@@ -309,7 +341,6 @@ header {
   background-color: rgb(77, 114, 207);
   border: none;
   border-radius: 15px;
-  
 }
 .search-input {
   padding: 0.5rem;
@@ -439,4 +470,22 @@ header {
 .template-btn button:hover {
   background-color: #6c6c70;
   cursor: pointer;
+}
+
+.purple {
+  background: #eeddff;
+  height: 10000px;
+}
+
+.purple div {
+  background-color: #eeddff;
+}
+
+.white {
+  background: #fff;
+  height: 10000px;
+}
+
+.white div {
+  background-color: #fff;
 }

@@ -16,31 +16,22 @@ const Post: React.FC = () => {
   const tempPost = useSelector((state: Posts) => state.post.post);
   const post = tempPost.filter((list) => list.id === params.id);
   return (
-    /*
-    <div className="blog">
-      <p>{post[0].title}</p>
-      <p>{post[0].author}</p>
-      <Viewer initialValue={post[0].markdown} />
-    </div>
-    */
     <div>
       <div className="header">
-        
-        <h1>Blog Title</h1>
+        <h1>{post[0].title}</h1>
       </div>
       <div className="row">
         <div className="post">
-          <h1>{post[0].title}</h1>
           <h5>{post[0].author}</h5>
           <div className="markdown">
             <Viewer initialValue={post[0].markdown} />
           </div>
         </div>
       </div>
-      <Link to="/newpost">
-          <button className="postBtn">글쓰기</button>
-        </Link>
-  </div>
+      <Link to={`/@${params.userId}/newpost`}>
+        <button className="postBtn">글쓰기</button>
+      </Link>
+    </div>
   );
 };
 

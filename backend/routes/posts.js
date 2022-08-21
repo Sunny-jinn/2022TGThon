@@ -1,16 +1,22 @@
 const express = require("express");
 const Post = require("./../models/post");
 const router = express.Router();
+const User = require("./../models/user");
 
 router.get("/new", (req, res) => {
   res.render("posts/new", { post: new Post() });
 });
 
-router.get("/", async (req, res) => {
+router.get("/:id", async (req, res) => {
   const posts = await Post.find().sort({
     createdAt: "desc", //최신순으로 정렬
   });
-  res.send({ posts: posts });
+  const userInfo = await User.find({ id: req.params.id });
+  res.send({
+    posts: posts,
+    userColor: userInfo[0].color,
+    userTp: userInfo[0].template,
+  });
 });
 
 router.get("/mypage/:author", async (req, res) => {
@@ -18,8 +24,13 @@ router.get("/mypage/:author", async (req, res) => {
   const posts = await Post.find({ author: req.params.author }).sort({
     createdAt: "desc",
   });
+  const userInfo = await User.find({ id: req.params.author });
   console.log(posts);
-  res.send({ posts: posts });
+  res.send({
+    posts: posts,
+    userColor: userInfo[0].color,
+    userTp: userInfo[0].template,
+  });
 });
 
 router.get("/test", (req, res) => {

@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
-
 const Post = require("./models/post");
 const User = require("./models/user");
 const postRouter = require("./routes/posts");
@@ -15,9 +14,7 @@ const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const session = require("express-session");
 const imgRouter = require("./routes/img");
-const morgan = require("morgan");
-const path = require("path");
-
+const mongoose = require("mongoose");
 const passportConfig = require("./passport");
 passportConfig();
 
@@ -80,6 +77,6 @@ app.use((err, req, res, next) => {
 });
 
 // port연결
-app.listen(app.get("port"), () => {
-  console.log(app.get("port"), "번 포트에서 대기중");
+app.listen(5000, () => {
+  console.log("5000번 포트에서 대기중");
 });

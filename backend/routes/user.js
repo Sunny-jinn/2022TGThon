@@ -54,4 +54,12 @@ router.post("/template", async (req, res) => {
   });
 });
 
+router.get("/userinfo/:id", async (req, res) => {
+  await User.find({ id: req.params.id }).then((res) => {
+    console.log(res[0].template);
+
+    res.send({ template: res[0].template, color: res[0].color });
+  });
+});
+
 module.exports = router;
