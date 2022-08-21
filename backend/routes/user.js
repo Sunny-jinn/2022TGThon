@@ -21,8 +21,9 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const userInfo = await User.find({ id: req.body.info.id });
+  console.log(userInfo);
   if (userInfo.length === 0) {
-    console.log("id is not available");
+    console.log("Id is not available");
     res.status(404).send({
       message: "Id is not found.",
     });
@@ -35,8 +36,22 @@ router.post("/login", async (req, res) => {
     console.log("Login success!");
     res.status(200).send({
       message: "Login success!",
+      color: userInfo[0].color,
+      id: userInfo[0].id,
     });
   }
+});
+
+router.post("/template", async (req, res) => {
+  const { template, color, id } = req.body;
+  const filter = { id: id };
+  const update = { template: template, color: color };
+  await User.findOneAndUpdate(filter, update, {
+    new: true,
+  }).then((response) => {
+    console.log(response);
+    res.send({ message: "success!" });
+  });
 });
 
 module.exports = router;

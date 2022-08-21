@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../assets/styles/blog.css";
 import { IPostState, PostsState } from "../store/index";
 import Card from "../components/layout/Card";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { postActions } from "../store/index";
 import Header from "../components/layout/Header";
@@ -15,6 +15,7 @@ interface Post {
 const Blog: React.FC = () => {
   const postList = useSelector((state: Post) => state.post.post);
   const dispatch = useDispatch();
+  const userId = useParams();
 
   useEffect(() => {
     const getPost = async () => {
@@ -36,8 +37,6 @@ const Blog: React.FC = () => {
     getPost();
   }, [dispatch]);
 
-  console.log(postList);
-
   return (
     <div>
       <Header />
@@ -52,7 +51,7 @@ const Blog: React.FC = () => {
             thumbnail={list.thumbnail}
           />
         ))}
-        <Link to="/newpost">
+        <Link to={`/@${userId.userId}/newpost`}>
           <button className="postBtn">글쓰기</button>
         </Link>
       </div>

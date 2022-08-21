@@ -1,5 +1,5 @@
 import React, { ReactEventHandler } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../../assets/styles/blog.css";
 import axios from "axios";
 import { postActions } from "../../store/index";
@@ -19,13 +19,14 @@ interface Post {
 }
 
 const Card = (props: PostState) => {
-  const postList = useSelector((state: Post) => state.post.post);
+  // const postList = useSelector((state: Post) => state.post.post);
+  const userId = useParams();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const clickHandler = (id: string) => {
-    navigate(`/posts/${id}`);
+    navigate(`/@${userId.userId}/posts/${id}`);
   };
 
   const deleteHandler = async (id: string) => {
@@ -40,17 +41,26 @@ const Card = (props: PostState) => {
   };
 
   return (
-    <div className="card">
-      <div className="card-thumbnail">
+    <div className="tp-circle">
+      <div className="tp-circle-thumbnail">
         <img src={`http://localhost:5000${props.thumbnail}`} alt="hi" />
-      </div>
-      <div className="card-main">
-        <div className="card-title" onClick={() => clickHandler(props.id)}>
-          {props.title}
+        <div className="tp-circle-main">
+          <div
+            className="tp-circle-title"
+            onClick={() => clickHandler(props.id)}
+          >
+            {props.title}
+          </div>
+          <div className="card-author">{props.author}</div>
+          <div className="card-text">{props.description}</div>
+          <button onClick={() => deleteHandler(props.id)}>삭제</button>
         </div>
-        <div className="card-author">{props.author}</div>
-        <div className="card-text">{props.description}</div>
-        <button onClick={() => deleteHandler(props.id)}>삭제</button>
+
+        {/*    <div className="card-text">{props.description}</div>
+         <button className="card-delete" onClick={() => deleteHandler(props.id)}>삭제</button>
+       </div>
+      /<div className="card-footer">
+         <div className="card-author">{props.author}</div> */}
       </div>
     </div>
   );

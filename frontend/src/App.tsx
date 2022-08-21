@@ -7,6 +7,7 @@ import Post from "./pages/PostDetail";
 import LoginPage from "./pages/LoginPage";
 import RegisterationPage from "./pages/RegisterationPage";
 import Template from "./pages/Template";
+import UserPage from "./pages/UserPage";
 
 const App: React.FC = () => {
   return (
@@ -14,10 +15,11 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/registeration" element={<RegisterationPage />} />
-        <Route path="/posts" element={<Blog />} />
-        <Route path="/newpost" element={<NewPost />} />
-        <Route path="/posts/:id" element={<Post />} />
-        <Route path="/start" element={<Template />} />
+        <Route path="/@:userId/posts" element={<Blog />} />
+        <Route path="/@:userId/newpost" element={<NewPost />} />
+        <Route path="/@:userId/posts/:id" element={<Post />} />
+        <Route path="/@:userId/start" element={<Template />} />
+        <Route path="/@:userId/userinfo" element={<UserPage />} />
       </Routes>
     </div>
   );
