@@ -9,6 +9,7 @@ const NewPost = (): JSX.Element => {
   const [thumbImg, setThumbImg] = useState<string>("");
   const [thumbFile, setThumbFile] = useState<any>();
   const userId = useParams();
+  console.log(userId.userId);
 
   let thPath = "";
 
@@ -35,7 +36,7 @@ const NewPost = (): JSX.Element => {
         .post("/posts/new", {
           post: {
             title: titleRef.current?.value,
-            author: "sunny",
+            author: userId.userId,
             description: descRef.current?.value,
             markdown: editRef.current?.getInstance().getMarkdown(),
             thumbnail: thPath,
@@ -51,14 +52,14 @@ const NewPost = (): JSX.Element => {
         .post("/posts/new", {
           post: {
             title: titleRef.current?.value,
-            author: "sunny",
+            author: userId.userId,
             description: descRef.current?.value,
             markdown: editRef.current?.getInstance().getMarkdown(),
           },
         })
         .then((res) => {
           console.log(res);
-          navigate("/posts");
+          navigate(`/@${userId.userId}/posts`);
         })
         .catch((err) => console.log(err));
     }

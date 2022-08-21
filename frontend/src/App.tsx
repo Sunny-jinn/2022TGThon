@@ -7,6 +7,7 @@ import Post from "./pages/PostDetail";
 import LoginPage from "./pages/LoginPage";
 import RegisterationPage from "./pages/RegisterationPage";
 import Template from "./pages/Template";
+import UserPage from "./pages/UserPage";
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Route path="/@:userId/newpost" element={<NewPost />} />
         <Route path="/@:userId/posts/:id" element={<Post />} />
         <Route path="/@:userId/start" element={<Template />} />
+        <Route path="/@:userId/userinfo" element={<UserPage />} />
       </Routes>
     </div>
   );

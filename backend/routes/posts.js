@@ -13,6 +13,15 @@ router.get("/", async (req, res) => {
   res.send({ posts: posts });
 });
 
+router.get("/mypage/:author", async (req, res) => {
+  console.log(req.params.author);
+  const posts = await Post.find({ author: req.params.author }).sort({
+    createdAt: "desc",
+  });
+  console.log(posts);
+  res.send({ posts: posts });
+});
+
 router.get("/test", (req, res) => {
   res.send({ message: "자고싶다" });
 });
@@ -49,11 +58,13 @@ router.delete("/delete", async (req, res) => {
 
 function savePostAndRedirect(path) {
   return async (req, res) => {
+    console.log(req.body.post);
     let post = req.post;
     post.title = req.body.post.title;
     post.description = req.body.post.description;
     post.markdown = req.body.post.markdown;
     post.thumbnail = req.body.post.thumbnail;
+    post.author = req.body.post.author;
     try {
       post = await post.save();
       console.log(post);

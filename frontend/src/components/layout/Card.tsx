@@ -41,17 +41,20 @@ const Card = (props: PostState) => {
   };
 
   return (
-    <div className="card">
-      <div className="card-thumbnail">
+    <div className="tp-circle">
+      <div className="tp-circle-thumbnail">
         <img src={`http://localhost:5000${props.thumbnail}`} alt="hi" />
-      </div>
-      <div className="card-main">
-        <div className="card-title" onClick={() => clickHandler(props.id)}>
-          {props.title}
+        <div className="tp-circle-main">
+          <div
+            className="tp-circle-title"
+            onClick={() => clickHandler(props.id)}
+          >
+            {props.title}
+          </div>
+          <div className="card-author">{props.author}</div>
+          <div className="card-text">{props.description}</div>
+          <button onClick={() => deleteHandler(props.id)}>삭제</button>
         </div>
-        <div className="card-author">{props.author}</div>
-        <div className="card-text">{props.description}</div>
-        <button onClick={() => deleteHandler(props.id)}>삭제</button>
       </div>
     </div>
   );

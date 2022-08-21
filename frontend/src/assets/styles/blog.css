@@ -203,20 +203,57 @@ header {
   font-size: 25px;
 }
 
-.card-thumbnail img {
-  width: 300px;
-  height: 200px;
-  border-radius: 20px 20px 0 0;
-}
-
 .card-background {
   background-color: rgb(255, 255, 255);
 }
 
+.tp-circle {
+  float: left;
+  width: 290px;
+  height: 290px;
+
+  text-align: center;
+  border-radius: 150px;
+  margin: 0px 10px 20px;
+  box-shadow: 3px 3px 3px 0 rgba(62, 62, 62, 0.299);
+}
+
+.tp-circle-title {
+  font-size: 40px;
+}
+
+.tp-circle-thumbnail {
+  position: relative;
+}
+
+.tp-circle-thumbnail img {
+  width: 290px;
+  height: 290px;
+  border-radius: 145px;
+}
+
+.tp-circle-thumbnail:hover img {
+  transition-duration: 0.2s;
+  opacity: 0.1;
+}
+
+.tp-circle-thumbnail:hover .tp-circle-main {
+  transition-duration: 0.2s;
+  opacity: 0.5;
+  color: #000000;
+}
+
+.tp-circle-main {
+  /* position: absolute; */
+  margin-top: -200px;
+  background: #00000000;
+  opacity: 0;
+}
+
 .postBtn {
   position: absolute;
-  top: 20px;
-  right: 12.5%;
+  top: 17px;
+  right: 15%;
   background: #fff;
   border-width: 1px;
   border-radius: 10px;
@@ -228,7 +265,7 @@ header {
 .search-input {
   padding: 0.5rem;
   width: 430px;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-left: 10%;
   font-size: 0.875rem;
   color: #24262d;
@@ -240,10 +277,17 @@ header {
 .header-logo {
   width: 100px;
   margin-left: 12.5%;
+  margin-top: 5px;
 }
 
 .header-search {
-  width: 70%;
+  width: 60%;
+}
+
+.header-icon {
+  margin-top: 23px;
+  margin-left: 12px;
+  cursor: pointer;
 }
 
 .title {
