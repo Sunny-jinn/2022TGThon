@@ -2,12 +2,13 @@ import React, { useRef, useState } from "react";
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const NewPost = (): JSX.Element => {
   const [thumbImg, setThumbImg] = useState<string>("");
   const [thumbFile, setThumbFile] = useState<any>();
+  const userId = useParams();
 
   let thPath = "";
 
@@ -42,7 +43,7 @@ const NewPost = (): JSX.Element => {
         })
         .then((res) => {
           console.log(res);
-          navigate("/posts");
+          navigate(`/@${userId.userId}/posts`);
         })
         .catch((err) => console.log(err));
     } else {

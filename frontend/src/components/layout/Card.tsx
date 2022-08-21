@@ -1,5 +1,5 @@
 import React, { ReactEventHandler } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../../assets/styles/blog.css";
 import axios from "axios";
 import { postActions } from "../../store/index";
@@ -19,13 +19,14 @@ interface Post {
 }
 
 const Card = (props: PostState) => {
-  const postList = useSelector((state: Post) => state.post.post);
+  // const postList = useSelector((state: Post) => state.post.post);
+  const userId = useParams();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const clickHandler = (id: string) => {
-    navigate(`/posts/${id}`);
+    navigate(`/@${userId.userId}/posts/${id}`);
   };
 
   const deleteHandler = async (id: string) => {

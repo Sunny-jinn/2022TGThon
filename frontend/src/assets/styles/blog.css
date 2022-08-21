@@ -19,6 +19,162 @@ header {
   margin-top: 100px;
 }
 
+.blog-center {
+  text-align: center;
+}
+
+.blog-center p {
+  font-size: 30px;
+}
+
+.template {
+  display: flex;
+  justify-content: center;
+}
+
+.template-box {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 100px;
+}
+
+.template-ex {
+  background-color: #c4c1c180;
+  border-radius: 30px;
+  width: 300px;
+  height: 200px;
+  margin: 40px;
+}
+
+.template-ex input {
+  margin-top: 15px;
+}
+
+.template-first {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+}
+
+.template-first table td {
+  width: 70px;
+  height: 70px;
+}
+
+.template-second {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+}
+
+.template-second table td {
+  width: 200px;
+  height: 33px;
+}
+
+.template-first table td div {
+  margin: 0 auto;
+}
+
+.td-1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: rgb(255, 191, 191);
+}
+.td-2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: rgb(255, 219, 179);
+}
+.td-3 {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: rgb(254, 255, 184);
+}
+.td-4 {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: rgb(171, 250, 161);
+}
+.td-5 {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: rgb(195, 184, 255);
+}
+.td-6 {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: rgb(232, 182, 255);
+}
+
+.td-1-1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(255, 191, 191);
+}
+.td-2-1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(255, 219, 179);
+}
+.td-3-1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(254, 255, 184);
+}
+.td-4-1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(171, 250, 161);
+}
+.td-5-1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(195, 184, 255);
+}
+.td-6-1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(232, 182, 255);
+}
+
+.td-1-2 {
+  width: 200px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: rgb(255, 191, 191);
+}
+.td-2-2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(255, 219, 179);
+}
+.td-3-2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(254, 255, 184);
+}
+.td-4-2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(171, 250, 161);
+}
+
 .new-post {
   margin-left: 12.5%;
   margin-right: 12.5%;
@@ -159,6 +315,35 @@ header {
 
 .input-label:hover {
   display: block;
-
   background: #6c6c70;
+}
+
+.template-color {
+  margin-top: 100px;
+}
+
+.template-color-select select {
+  width: 300px;
+  height: 50px;
+  text-align: center;
+  font-size: large;
+}
+
+.template-btn {
+  margin-top: 70px;
+}
+
+.template-btn button {
+  width: 100px;
+  height: 30px;
+  border: 0;
+  border-radius: 3px;
+  background-color: rgb(0, 0, 0);
+  color: #fff;
+  font-size: large;
+}
+
+.template-btn button:hover {
+  background-color: #6c6c70;
+  cursor: pointer;
 }
