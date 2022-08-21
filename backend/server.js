@@ -24,6 +24,21 @@ mongoose.connect("mongodb://localhost/blog", {
   useUnifiedTopology: true,
 });
 
+// mongoose.connect(
+//   "mongodb://leejeongwoo:1234@127.0.0.1:27017/admin",
+//   {
+//     dbName: "blog1",
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   },
+//   (error) => {
+//     if (error) {
+//       console.log("몽고디비에러", error);
+//     } else {
+//       console.log("몽고디비연결성공");
+//     }
+//   }
+// );
 // .env 파일 사용
 dotenv.config();
 
