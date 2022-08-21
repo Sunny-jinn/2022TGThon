@@ -64,11 +64,6 @@ function RegisterationForm() {
           <TextInput type="password" ref={inputPwRef} />
         </Sli>
         <Sli>
-          <Slabel>비밀번호 확인</Slabel>
-          <TextInput type="password" ref={inputPwRef} />
-          {/* <Button title="확인" /> */}
-        </Sli>
-        <Sli>
           <Slabel>이름</Slabel>
           <TextInput type="text" ref={inputNameRef} />
         </Sli>

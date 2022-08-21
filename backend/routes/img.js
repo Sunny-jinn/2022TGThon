@@ -5,7 +5,7 @@ const fs = require("fs");
 const iconv = require("iconv-lite");
 
 const Img = require("../models/img");
-
+const post = require("../models/post");
 const router = express.Router();
 
 try {

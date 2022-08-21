@@ -12,7 +12,9 @@ router.post("/register", isNotLoggedIn, async (req, res, next) => {
   try {
     const exUser = await User.find({ number: number });
     const exUserr = await User.find({ id: id });
-    console.log(exUser[0] == undefined);
+    // console.log(exUser);
+    // console.log(exUserr);
+    console.log(exUser[0] !== undefined);
     console.log(exUserr);
     if (exUser[0] !== undefined || exUserr[0] !== undefined) {
       return res.redirect("/register?error=exist");
@@ -32,21 +34,30 @@ router.post("/register", isNotLoggedIn, async (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
-  console.log("hi");
+  console.log(req);
+
   passport.authenticate("local", (authError, user, info) => {
     if (authError) {
       console.error(authError);
+      console.error(1111111);
       return next(authError);
     }
     if (!user) {
+      console.error(222222);
+      console.log(info.message);
+      console.log(user);
+
       return res.redirect(`/?loginError=${info.message}`);
     }
     return req.login(user, (loginError) => {
       if (loginError) {
         console.error(loginError);
+        console.error(33333);
+
         return next(loginError);
       }
-      return res.redirect("/");
+      console.log(234);
+      return res.redirect("/posts");
     });
   })(req, res, next);
 });

@@ -1,9 +1,4 @@
 const mongoose = require("mongoose");
-const marked = require("marked");
-const slugify = require("slugify");
-const createDomPurify = require("dompurify"); //for markdown
-const { JSDOM } = require("jsdom"); //for markdown
-const dompurify = createDomPurify(new JSDOM().window); //for markdown
 const postSchema = new mongoose.Schema({
   title: {
     type: String,

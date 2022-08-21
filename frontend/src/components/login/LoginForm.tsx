@@ -33,10 +33,8 @@ function LoginForm() {
   const clickHandler = () => {
     axios
       .post("/user/login", {
-        info: {
-          id: inputIdRef.current?.value,
-          password: inputPwRef.current?.value,
-        },
+        id: inputIdRef.current?.value,
+        password: inputPwRef.current?.value,
       })
       .then((res) => {
         console.log(res);
@@ -45,11 +43,11 @@ function LoginForm() {
   };
 
   const registerClickHandler = () => {
-    navigate("/registeration");
+    navigate("/register");
   };
 
   return (
-    <StyledForm>
+    <form action="user/login" method="post">
       <Styledfieldset>
         <Styledh3>로그인</Styledh3>
         <Styledul>
@@ -60,6 +58,7 @@ function LoginForm() {
               width={370}
               height={45}
               ref={inputIdRef}
+              name="id"
             />
           </li>
           <li>
@@ -70,15 +69,18 @@ function LoginForm() {
               type="password"
               placeholder="PASSWORD"
               ref={inputPwRef}
+              name="password"
             />
           </li>
         </Styledul>
         <span style={{ margin: "140px" }}>
-          <Button title="로그인" onClick={clickHandler} />
+          <button title="로그인" type="submit">
+            로그인
+          </button>
           <Button title="회원가입" onClick={registerClickHandler} />
         </span>
       </Styledfieldset>
-    </StyledForm>
+    </form>
   );
 }
 

@@ -19,10 +19,26 @@ const path = require("path");
 const passportConfig = require("./passport");
 passportConfig();
 
-mongoose.connect("mongodb://localhost/blog", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb://leejeongwoo:1234@127.0.0.1:27017/admin",
+  {
+    dbName: "blog1",
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (error) => {
+    if (error) {
+      console.log("몽고디비 연결에러", error);
+    } else {
+      console.log("몽고디비 연결성공");
+    }
+  }
+);
+
+// mongoose.connect("mongodb://localhost/blog", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 // .env 파일 사용
 dotenv.config();

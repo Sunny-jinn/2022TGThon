@@ -18,10 +18,11 @@ interface IText {
   type?: string;
   size?: number;
   margin?: number;
+  name?: string;
 }
 
 const TextInput = React.forwardRef((props: IText, ref: any) => {
-  const { height, value, onChange, placeholder, width, type, size, margin } =
+  const { height, value, onChange, placeholder, width, type, size, name } =
     props;
   return (
     <StyledTextInput
@@ -33,6 +34,7 @@ const TextInput = React.forwardRef((props: IText, ref: any) => {
       value={value}
       onChange={onChange}
       ref={ref}
+      name={name}
     />
   );
 });
