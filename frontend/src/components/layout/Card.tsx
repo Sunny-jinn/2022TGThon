@@ -48,9 +48,11 @@ const Card = (props: PostState) => {
         <div className="card-title" onClick={() => clickHandler(props.id)}>
           {props.title}
         </div>
-        <div className="card-author">{props.author}</div>
         <div className="card-text">{props.description}</div>
-        <button onClick={() => deleteHandler(props.id)}>삭제</button>
+        <button className="card-delete" onClick={() => deleteHandler(props.id)}>삭제</button>
+      </div>
+      <div className="card-footer">
+        <div className="card-author">{props.author}</div>
       </div>
     </div>
   );
