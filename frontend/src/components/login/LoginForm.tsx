@@ -39,7 +39,11 @@ function LoginForm() {
         },
       })
       .then((res) => {
-        console.log(res);
+        if (res.data.color) {
+          navigate(`/@${res.data.id}/posts`);
+        } else {
+          navigate(`/@${res.data.id}/start`);
+        }
       })
       .catch((err) => console.log(err));
   };

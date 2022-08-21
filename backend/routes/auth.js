@@ -25,7 +25,6 @@ router.post("/register", isNotLoggedIn, async (req, res, next) => {
       template: "",
       color: "",
     });
-    res.redirect("/");
   } catch (error) {
     console.error(error);
     return next(error);
