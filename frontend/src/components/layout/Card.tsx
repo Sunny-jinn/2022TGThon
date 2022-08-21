@@ -55,6 +55,12 @@ const Card = (props: PostState) => {
           <div className="card-text">{props.description}</div>
           <button onClick={() => deleteHandler(props.id)}>삭제</button>
         </div>
+
+        {/*    <div className="card-text">{props.description}</div>
+         <button className="card-delete" onClick={() => deleteHandler(props.id)}>삭제</button>
+       </div>
+      /<div className="card-footer">
+         <div className="card-author">{props.author}</div> */}
       </div>
     </div>
   );
