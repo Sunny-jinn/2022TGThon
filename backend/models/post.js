@@ -1,3 +1,7 @@
+/*테이블=컬렉션
+  로우=다큐먼트
+  컬럼=필드    */
+
 const mongoose = require("mongoose");
 const marked = require("marked");
 const slugify = require("slugify");
