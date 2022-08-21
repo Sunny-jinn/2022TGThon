@@ -18,6 +18,12 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  color: {
+    type: String,
+  },
+  template: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("User", postSchema);

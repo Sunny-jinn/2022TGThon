@@ -13,6 +13,15 @@ router.get("/", async (req, res) => {
   res.send({ posts: posts });
 });
 
+router.get("/mypage/:author", async (req, res) => {
+  console.log(req.params.author);
+  const posts = await Post.find({ author: req.params.author }).sort({
+    createdAt: "desc",
+  });
+  console.log(posts);
+  res.send({ posts: posts });
+});
+
 router.get("/test", (req, res) => {
   res.send({ message: "자고싶다" });
 });
@@ -22,25 +31,11 @@ router.get("/edit/:id", async (req, res) => {
   res.render("posts/edit", { post: post });
 });
 
-router.get("/:slug", async (req, res) => {
-  const post = await Post.findOne({ slug: req.params.slug });
-  if (post == null) res.redirect("/");
-  res.render("posts/show", { post: post });
-});
-
-router.post(
-  "/",
-  async (req, res, next) => {
-    req.post = new Post();
-    next();
-  },
-  savePostAndRedirect("new")
-);
-
 router.post(
   "/new",
   async (req, res, next) => {
     req.post = new Post();
+    // console.log("dsfsdf");
     next();
   },
   savePostAndRedirect("new")
@@ -57,20 +52,28 @@ router.put(
 
 router.delete("/delete", async (req, res) => {
   await Post.findByIdAndDelete(req.body.id);
+
   res.redirect("/");
 });
 
 function savePostAndRedirect(path) {
   return async (req, res) => {
+    console.log(req.body.post);
     let post = req.post;
     post.title = req.body.post.title;
     post.description = req.body.post.description;
     post.markdown = req.body.post.markdown;
+    post.thumbnail = req.body.post.thumbnail;
+    post.author = req.body.post.author;
     try {
       post = await post.save();
-      res.redirect(`/posts/${post.slug}`);
+      console.log(post);
+      res.send({
+        message: "hi",
+      });
     } catch (e) {
-      res.render(`posts/${path}`, { post: post });
+      // res.render(`posts/${path}`, { post: post });
+      console.log(e);
     }
   };
 }
